@@ -9,6 +9,7 @@ void from_pos();
 void from_end();
 void rev_ll();
 void display();
+void display_rev();
 struct node{
     int data;
     struct node* next;
@@ -49,6 +50,9 @@ int main(){
             break;
         case 9:
             exit(1);
+        case 10:
+            display_rev(head);
+            printf("NULL\n");
         default:
             break;
         }
@@ -175,4 +179,11 @@ void from_pos(){
         temp2->next = temp1->next;
         free(temp1);
     }
+}
+void display_rev(struct node* root){
+    if(root==NULL){
+        return;
+    }
+    display_rev(root->next);
+    printf("%d -> ",root->data);
 }
